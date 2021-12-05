@@ -1,0 +1,9 @@
+salesforce.ProfileSessionSetting test_profileSessionSetting1637525592067 {
+  fullName = "test_profileSessionSetting1637525592067"
+  externalCommunityUserIdentityVerif = false
+  forceLogout = false
+  profile = "test"
+  sessionPersistence = false
+  sessionTimeout = 0
+  sessionTimeoutWarning = false
+}

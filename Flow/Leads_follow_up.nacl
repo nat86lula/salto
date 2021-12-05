@@ -1,0 +1,142 @@
+salesforce.Flow Leads_follow_up {
+  fullName = "Leads_follow_up"
+  actionCalls = {
+    processMetadataValues = [
+      {
+        name = "emailAlertSelection"
+        value = {
+          stringValue = "New_hot_lead"
+        }
+      },
+    ]
+    name = "myRule_1_A1"
+    label = "New hot lead"
+    locationX = 100
+    locationY = 200
+    actionName = salesforce.WorkflowAlert.instance.Lead_New_hot_lead@vuu
+    actionType = "emailAlert"
+    inputParameters = [
+      {
+        name = "SObjectRowId"
+        value = {
+          elementReference = "myVariable_current.Id"
+        }
+      },
+    ]
+  }
+  apiVersion = 53
+  decisions = [
+    {
+      processMetadataValues = {
+        name = "index"
+        value = {
+          numberValue = 0
+        }
+      }
+      name = "myDecision"
+      label = "myDecision"
+      locationX = 50
+      locationY = 0
+      defaultConnectorLabel = "default"
+      rules = [
+        {
+          name = "myRule_1"
+          conditionLogic = "and"
+          conditions = [
+            {
+              processMetadataValues = [
+                {
+                  name = "inputDataType"
+                  value = {
+                    stringValue = "Picklist"
+                  }
+                },
+                {
+                  name = "leftHandSideType"
+                  value = {
+                    stringValue = "Picklist"
+                  }
+                },
+                {
+                  name = "operatorDataType"
+                  value = {
+                    stringValue = "String"
+                  }
+                },
+                {
+                  name = "rightHandSideType"
+                  value = {
+                    stringValue = "Picklist"
+                  }
+                },
+              ]
+              leftValueReference = "myVariable_current.Lead_score__c"
+              operator = "EqualTo"
+              rightValue = {
+                stringValue = "Hot"
+              }
+            },
+          ]
+          connector = {
+            targetReference = "myRule_1_A1"
+          }
+          label = "Score"
+        },
+      ]
+    },
+  ]
+  interviewLabel = "Leads_follow_up-1_InterviewLabel"
+  label = "Leads follow up"
+  processMetadataValues = [
+    {
+      name = "ObjectType"
+      value = {
+        stringValue = "Lead"
+      }
+    },
+    {
+      name = "ObjectVariable"
+      value = {
+        elementReference = "myVariable_current"
+      }
+    },
+    {
+      name = "OldObjectVariable"
+      value = {
+        elementReference = "myVariable_old"
+      }
+    },
+    {
+      name = "TriggerType"
+      value = {
+        stringValue = "onAllChanges"
+      }
+    },
+  ]
+  processType = "Workflow"
+  startElementReference = "myDecision"
+  status = "Active"
+  variables = [
+    {
+      name = "myVariable_current"
+      dataType = "SObject"
+      isCollection = false
+      isInput = true
+      isOutput = true
+      objectType = salesforce.Lead
+    },
+    {
+      name = "myVariable_old"
+      dataType = "SObject"
+      isCollection = false
+      isInput = true
+      isOutput = false
+      objectType = salesforce.Lead
+    },
+  ]
+  _generated_dependencies = [
+    {
+      reference = salesforce.Lead.field.Lead_score__c
+    },
+  ]
+}

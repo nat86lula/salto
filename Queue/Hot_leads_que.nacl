@@ -1,0 +1,13 @@
+salesforce.Queue Hot_leads_que {
+  fullName = "Hot_leads_que"
+  doesSendEmailToMembers = false
+  name = "Hot leads queue"
+  queueMembers = {
+    users = {
+      user = "natalyabr@gmail.com"
+    }
+  }
+  queueSobject = {
+    sobjectType = "Lead"
+  }
+}

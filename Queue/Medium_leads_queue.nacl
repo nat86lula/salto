@@ -1,0 +1,13 @@
+salesforce.Queue Medium_leads_queue {
+  fullName = "Medium_leads_queue"
+  doesSendEmailToMembers = false
+  name = "Medium leads queue"
+  queueMembers = {
+    users = {
+      user = "natalyabr@gmail.com"
+    }
+  }
+  queueSobject = {
+    sobjectType = "Lead"
+  }
+}
