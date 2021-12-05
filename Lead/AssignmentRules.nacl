@@ -1,0 +1,103 @@
+salesforce.AssignmentRules Lead {
+  assignmentRule = [
+    {
+      fullName = "Assign hot lead"
+      active = true
+      ruleEntry = [
+        {
+          assignedTo = "Hot_leads_que"
+          assignedToType = "Queue"
+          criteriaItems = [
+            {
+              field = salesforce.Lead.field.Lead_score__c
+              operation = "equals"
+              value = "Hot"
+            },
+            {
+              field = salesforce.Lead.field.Company
+              operation = "notEqual"
+            },
+            {
+              field = salesforce.Lead.field.DoNotCall
+              operation = "notEqual"
+              value = "True"
+            },
+          ]
+        },
+        {
+          assignedTo = "Medium_leads_queue"
+          assignedToType = "Queue"
+          criteriaItems = [
+            {
+              field = salesforce.Lead.field.Lead_score__c
+              operation = "equals"
+              value = "Medium"
+            },
+            {
+              field = salesforce.Lead.field.Company
+              operation = "notEqual"
+            },
+          ]
+        },
+        {
+          assignedTo = "Cold_leads_queue"
+          assignedToType = "Queue"
+          criteriaItems = [
+            {
+              field = salesforce.Lead.field.Lead_score__c
+              operation = "equals"
+              value = "Cold"
+            },
+          ]
+        },
+      ]
+    },
+    {
+      fullName = "Medium leads assigment"
+      active = false
+      ruleEntry = [
+        {
+          criteriaItems = [
+            {
+              field = salesforce.Lead.field.Lead_score__c
+              operation = "equals"
+              value = "Medium"
+            },
+          ]
+        },
+      ]
+    },
+    {
+      fullName = "Standard"
+      active = false
+      ruleEntry = [
+        {
+          assignedTo = "natalyabr@gmail.com"
+          assignedToType = "User"
+          criteriaItems = [
+            {
+              field = "Lead.Country"
+              operation = "equals"
+              value = "US,USA,United States,United States of America"
+            },
+          ]
+        },
+        {
+          assignedTo = "natalyabr@gmail.com"
+          assignedToType = "User"
+          criteriaItems = [
+            {
+              field = "Lead.Country"
+              operation = "notEqual"
+              value = "US,USA,United States,United States of America"
+            },
+          ]
+        },
+      ]
+    },
+  ]
+  fullName = "Lead"
+  _parent = [
+    salesforce.Lead,
+  ]
+}

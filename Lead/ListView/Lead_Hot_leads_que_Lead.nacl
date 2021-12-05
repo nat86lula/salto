@@ -1,0 +1,12 @@
+salesforce.ListView Lead_Hot_leads_que_Lead {
+  fullName = "Lead.Hot_leads_que_Lead"
+  filterScope = "Queue"
+  label = "Hot leads queue"
+  queue = "Hot_leads_que"
+  sharedTo = {
+    allInternalUsers = ""
+  }
+  _parent = [
+    salesforce.Lead,
+  ]
+}

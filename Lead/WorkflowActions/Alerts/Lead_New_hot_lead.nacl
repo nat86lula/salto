@@ -1,0 +1,16 @@
+salesforce.WorkflowAlert Lead_New_hot_lead@vuu {
+  fullName = "Lead.New_hot_lead"
+  description = "New hot lead"
+  protected = false
+  recipients = [
+    {
+      recipient = "natalyabr@gmail.com"
+      type = "user"
+    },
+  ]
+  senderType = "CurrentUser"
+  template = "unfiled$public/SupportEscalatedCaseNotification"
+  _parent = [
+    salesforce.Lead,
+  ]
+}

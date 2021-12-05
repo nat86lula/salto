@@ -1,0 +1,12 @@
+salesforce.ListView Lead_Medium_leads_queue_Lead {
+  fullName = "Lead.Medium_leads_queue_Lead"
+  filterScope = "Queue"
+  label = "Medium leads queue"
+  queue = "Medium_leads_queue"
+  sharedTo = {
+    allInternalUsers = ""
+  }
+  _parent = [
+    salesforce.Lead,
+  ]
+}
